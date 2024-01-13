@@ -1,0 +1,7 @@
+*.mdb filter=lfs diff=lfs merge=lfs -text
+.parcel-cache/data.mdb filter=lfs diff=lfs merge=lfs -text
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto
+
+# Explicitly declare text files you want to always be normalized and converted to CRLF on checkout.
+*.json text eol=crlf

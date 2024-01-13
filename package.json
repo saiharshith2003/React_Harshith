@@ -1,0 +1,29 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "Harshith",
+  "main": "App.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saiharshith2003/React_Harshith.git"
+  },
+  "author": "Harshith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saiharshith2003/React_JS/issues"
+  },
+  "homepage": "https://github.com/saiharshith2003/React_JS#readme",
+  "devDependencies": {
+    "parcel": "^2.11.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.1"
+  }
+}
