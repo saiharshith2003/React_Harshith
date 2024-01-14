@@ -16,7 +16,7 @@ const Body = () => {
     const fetchData = async () => {
         const data = await
             fetch(
-                "https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.5504297&lng=80.64925389999999&collection=88750&tags=layout_ux4&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
+                "https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.5504297&lng=80.64925389999999&collection=88750&tags=layout_ux4&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
             )
         const json = await data.json();
         const apiList = json?.data?.cards.map((res) => { //mapping cards array
