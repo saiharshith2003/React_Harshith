@@ -7,11 +7,11 @@ const Header = () => {
     const onlineStatus = useOnlineStatus();
     console.log("Changing")
     return (
-        <div className="head">
-            <img className="logo" src={LOGO_URL}></img>
-            <div className="list-items">
-                <ul >
-                    <li>OnlineStatus: {
+        <div className="flex justify-between m-2 shadow-md">
+            <img className="w-38 h-28 mt-4 mx-4" src={LOGO_URL}></img>
+            <div className="flex items-center">
+                <ul className="flex gap-4 list-none px-8 py-14" >
+                    <li className="font-bold">OnlineStatus: {
                         onlineStatus ? "✅" : "🔴"
                     }
                     </li>

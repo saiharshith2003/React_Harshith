@@ -41,11 +41,11 @@ const Body = () => {
     }
 
     return (
-        <div className="res-container" >
-            <div className="Totalbox">
-                <div className="search-box">
-                    <input type="text" value={searchtext} onChange={(e) => setSearchtext(e.target.value)} />
-                    <button className="searchbtn" onClick={
+        <div className="" >
+            <div className="filter flex ml-10">
+                <div className="m-4 p-4">
+                    <input type="text" className="border border-solid border-black rounded-lg" value={searchtext} onChange={(e) => setSearchtext(e.target.value)} />
+                    <button className="bg-green-100 ml-4 px-4 py-2 rounded-lg" onClick={
                         () => {
                             const flist = list.filter
                                 (
@@ -55,23 +55,26 @@ const Body = () => {
                         }
                     }>Search</button>
                 </div>
-                <span className="box">
-                    <button className="filter-top" onClick={() => {
-                        const list1 = list.filter(
-                            (res) => { return res.avgRating >= 4 }
-                        )
-                        setFilterList(list1);
-                        console.log(list1)
-                    }}>
+                <div className="p-4 flex items-center">
+                    <button className="bg-gray-100 px-4 py-2 rounded-xl"
+                        onClick={() => {
+                            const list1 = list.filter(
+                                (res) => { return res.avgRating >= 4 }
+                            )
+                            setFilterList(list1);
+                            console.log(list1)
+                        }}>
                         Top Rated Restaurants
                     </button>
-                </span>
+                </div>
             </div>
-            <span className="res-card">
+            <div className="flex flex-wrap">
                 {filterList.map((res) => (
-                    <Link className="link-res-card" key={res.id} to={"/restraunts/" + res.id}><Card key={res.id} cardList={res} /></Link>
+                    <Link className="link-res-card" key={res.id} to={"/restraunts/" + res.id}>
+                        <Card key={res.id} cardList={res} />
+                    </Link>
                 ))}
-            </span>
+            </div>
         </div>
     );
 };
