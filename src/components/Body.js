@@ -44,8 +44,8 @@ const Body = () => {
         <div className="" >
             <div className="filter flex ml-10">
                 <div className="m-4 p-4">
-                    <input type="text" className="border border-solid border-black rounded-lg" value={searchtext} onChange={(e) => setSearchtext(e.target.value)} />
-                    <button className="bg-green-100 ml-4 px-4 py-2 rounded-lg" onClick={
+                    <input type="text" className="border border-solid border-black rounded-lg shadow-md h-9" value={searchtext} onChange={(e) => setSearchtext(e.target.value)} />
+                    <button className="bg-green-100 ml-4 px-4 py-2 rounded-lg shadow-lg" onClick={
                         () => {
                             const flist = list.filter
                                 (
@@ -56,7 +56,7 @@ const Body = () => {
                     }>Search</button>
                 </div>
                 <div className="p-4 flex items-center">
-                    <button className="bg-gray-100 px-4 py-2 rounded-xl"
+                    <button className="bg-gray-100 px-4 py-2 rounded-xl shadow-lg"
                         onClick={() => {
                             const list1 = list.filter(
                                 (res) => { return res.avgRating >= 4 }
