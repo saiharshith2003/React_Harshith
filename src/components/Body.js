@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from "react";
-import Card from "./Card";
+import Card, { withPromotedLabel } from "./Card";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+
 const Body = () => {
 
 
     const [list, setList] = useState([]);
     const [filterList, setFilterList] = useState([]);
     const [searchtext, setSearchtext] = useState("");
+    const ResPromotedLabel = withPromotedLabel(Card);
+
     useEffect(() => {
         fetchData();
     }, [])
-
     const fetchData = async () => {
         const data = await
             fetch(
-                "https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.5504297&lng=80.64925389999999&collection=88750&tags=layout_ux4&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
+                "https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.5504297&lng=80.64925389999999&collection=88750&tags=layout_ux4&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
             )
         const json = await data.json();
         const apiList = json?.data?.cards.map((res) => { //mapping cards array
@@ -26,7 +28,7 @@ const Body = () => {
 
         setList(apiList);
         setFilterList(apiList);
-
+        console.log(apiList)
     }
 
     const onlineStatus = useOnlineStatus();
@@ -71,7 +73,8 @@ const Body = () => {
             <div className="flex flex-wrap">
                 {filterList.map((res) => (
                     <Link className="link-res-card" key={res.id} to={"/restraunts/" + res.id}>
-                        <Card key={res.id} cardList={res} />
+                        {res.promoted ? (<ResPromotedLabel cardList={res} />) : (<Card key={res.id} cardList={res} />)}
+
                     </Link>
                 ))}
             </div>

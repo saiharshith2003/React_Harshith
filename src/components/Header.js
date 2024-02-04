@@ -5,7 +5,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 const Header = () => {
     const [btnName, setBtnName] = useState("Login");
     const onlineStatus = useOnlineStatus();
-    console.log("Changing")
+
     return (
         <div className="flex justify-between m-2 shadow-md">
             <img className="w-38 h-28 mt-4 mx-4" src={LOGO_URL}></img>
