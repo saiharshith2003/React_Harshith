@@ -9,8 +9,8 @@ const ResCategory = (props) => {
     }
     return (
         <div>
-            <div className="m-auto w-8/12">
-                <div className="m-4 p-8  border-gray-200 border-b-2 shadow-md text-xl  cursor-pointer">
+            <div className="m-auto w-8/12 ">
+                <div className="m-4 p-8  border-gray-200 border-b-2 shadow-md text-xl  cursor-pointer rounded-xl">
                     <div className="flex justify-between font-bold" onClick={handleClick}>{props.data.title}
                         <div>⬇️</div>
                     </div>
