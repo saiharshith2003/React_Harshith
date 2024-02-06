@@ -2,11 +2,12 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useResMenu from "../utils/useResMenu";
 import ResCategory from "./ResCategory"
+import { useState } from "react";
 const ResMenu = () => {
 
     const { resId } = useParams();
     const menuList = useResMenu(resId);
-
+    const [showIndex, setShowIndex] = useState(null)
     if (menuList === null) {
         return <Shimmer />
     }
@@ -45,6 +46,9 @@ const ResMenu = () => {
                     <ResCategory
                         key={category?.card?.card.title}
                         data={category?.card?.card}
+                        showItems={index === showIndex ? true : false}
+                        setShowIndex={() => setShowIndex(index)}
+                        index={index}
                     />
                 ))}
 

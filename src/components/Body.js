@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Card, { withPromotedLabel } from "./Card";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
 
@@ -11,7 +12,7 @@ const Body = () => {
     const [filterList, setFilterList] = useState([]);
     const [searchtext, setSearchtext] = useState("");
     const ResPromotedLabel = withPromotedLabel(Card);
-
+    const { setUserName, userName } = useContext(UserContext)
     useEffect(() => {
         fetchData();
     }, [])
@@ -68,6 +69,10 @@ const Body = () => {
                         }}>
                         Top Rated Restaurants
                     </button>
+                </div>
+                <div className="m-4 p-4">
+                    <label className="p-2">UserName:</label>
+                    <input type="text" className="border-solid rounded-md shadow-md p-2" vlaue={userName} onChange={(e) => setUserName(e.target.value)} />
                 </div>
             </div>
             <div className="flex flex-wrap">

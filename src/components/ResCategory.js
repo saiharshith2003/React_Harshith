@@ -3,9 +3,9 @@ import { useState } from "react";
 import ItemList from "./ItemList";
 
 const ResCategory = (props) => {
-    const [show, setShow] = useState(false);
+    const { setShowIndex, showItems } = props
     const handleClick = () => {
-        setShow(!show)
+        setShowIndex()
     }
     return (
         <div>
@@ -14,7 +14,7 @@ const ResCategory = (props) => {
                     <div className="flex justify-between font-bold" onClick={handleClick}>{props.data.title}
                         <div>⬇️</div>
                     </div>
-                    {show && <ItemList cardData={props.data.itemCards} />}
+                    {showItems && <ItemList cardData={props.data.itemCards} />}
                 </div>
 
             </div>
