@@ -1,8 +1,16 @@
+import { useDispatch } from "react-redux";
 import { CDN_URL } from "../utils/constants";
-
+import { addItem, removeItem } from "../utils/cartSlice";
 const ItemList = (props) => {
     console.log(props.cardData)
-    const { cardData } = props;
+    const { cardData, showButton } = props;
+    const dispatch = useDispatch()
+    const handleAdd = (cardData) => {
+        dispatch(addItem(cardData))
+    }
+    const handleRemove = (data) => {
+        dispatch(removeItem({ id: data.card.info.id }));
+    };
     return (
         <div className="">
             {
@@ -14,8 +22,8 @@ const ItemList = (props) => {
                                 className="p-2 m-2 border-gray-200 border-b-2 text-left flex justify-between">
                                 <div>
                                     <div className="py-2">
-                                        <span className="font-bold">{name.card.info.name}</span><br></br>
-                                        <span className="font-bold">₹
+                                        <span className="font-bold text-2xl">{name.card.info.name}</span><br></br>
+                                        <span className="py-2 font-bold text-xl">₹
                                             {name.card.info.price ? name.card.info.price / 100 : name.card.info.defaultPrice / 100}
                                         </span>
                                     </div>
@@ -26,9 +34,24 @@ const ItemList = (props) => {
                                         <img src={CDN_URL + name.card.info.imageId} className="w-[380px] h-[180px] object-cover rounded-lg shadow-lg   " />
                                     </div>
                                     <div className="absolute top-0 left-9 ">
-                                        <button className="p-2 rounded-lg bg-black text-white shadow-lg">
-                                            Add +
-                                        </button>
+                                        {showButton && (
+                                            <button
+                                                className="p-2 rounded-lg bg-black text-white shadow-lg"
+                                                onClick={() => handleAdd(name)}
+                                            >
+                                                Add +
+                                            </button>
+                                        )}
+                                    </div>
+                                    <div className="absolute top-0 right-0 ">
+                                        {!showButton && (
+                                            <button
+                                                className="p-2 rounded-lg bg-red-500 text-white shadow-lg"
+                                                onClick={() => handleRemove(name)}
+                                            >
+                                                Remove
+                                            </button>
+                                        )}
                                     </div>
                                 </div>
 

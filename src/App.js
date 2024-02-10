@@ -9,6 +9,9 @@ import Contact from "./components/Contact";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import ResMenu from "./components/ResMenu";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 const App = () => {
     const [userName, setUserName] = useState();
     useEffect(() => {
@@ -19,12 +22,14 @@ const App = () => {
     }, [])
 
     return (
-        <UserContext.Provider value={{ User: userName, setUserName, userName }}>
-            <div>
-                <Header />
-                <Outlet />
-            </div>
-        </UserContext.Provider>
+        <Provider store={appStore}>
+            <UserContext.Provider value={{ User: userName, setUserName, userName }}>
+                <div>
+                    <Header />
+                    <Outlet />
+                </div>
+            </UserContext.Provider>
+        </Provider>
     )
 }
 
@@ -44,7 +49,10 @@ const routerConfig = createBrowserRouter([{
     }, {
         path: "/restraunts/:resId",
         element: <ResMenu />
-    }],
+    }, {
+        path: "/cart",
+        element: <Cart />
+    },],
     errorElement: <Error />,
 },
 

@@ -14,7 +14,7 @@ const ResCategory = (props) => {
                     <div className="flex justify-between font-bold" onClick={handleClick}>{props.data.title}
                         <div>⬇️</div>
                     </div>
-                    {showItems && <ItemList cardData={props.data.itemCards} />}
+                    {showItems && <ItemList cardData={props.data.itemCards} showButton={true} />}
                 </div>
 
             </div>
