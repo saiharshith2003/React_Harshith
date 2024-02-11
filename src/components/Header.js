@@ -5,11 +5,41 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
 import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addUser, removeUser } from "../utils/userSlice";
+import { auth } from "../utils/firebase";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { dontShowButton } from "../utils/userSlice";
 const Header = () => {
-    const [btnName, setBtnName] = useState("Login");
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const { showLoginSignupButton, displayName } = useSelector((store) => store.user);
+    console.log("Hi Harshith", showLoginSignupButton);
+    console.log(displayName)
+    const handleSignOut = () => {
+        signOut(auth).then(() => {
+            dispatch(dontShowButton())
+            navigate("/login")
+        }).catch((error) => {
+        });
+    }
     const onlineStatus = useOnlineStatus();
     const { User } = useContext(UserContext);
     const cartItems = useSelector((store) => store.cart.items);
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                const { uid, email, displayName } = user;
+                dispatch(addUser({ uid: uid, email: email, displayName: displayName }))
+            } else {
+                dispatch(removeUser())
+            }
+        });
+    }, []
+    )
     return (
         <div className="flex justify-between m-2 shadow-md">
             <img className="w-38 h-28 mt-4 mx-4" src={LOGO_URL}></img>
@@ -25,12 +55,7 @@ const Header = () => {
                     <li >
                         <Link to="/cart">Cart-  ({cartItems.length})</Link>
                     </li>
-                    <button className="btn" onClick={() => {
-                        btnName === "Login"
-                            ? setBtnName("Logout")
-                            : setBtnName("Login")
-                    }
-                    }>{btnName}</button>
+                    <li>{showLoginSignupButton ? <Link to="/login">SignIn</Link> : <button onClick={handleSignOut}>Sign out</button>}</li>
                     <li className="font-bold">{User}</li>
                 </ul>
             </div>

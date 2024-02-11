@@ -9,17 +9,15 @@ import Contact from "./components/Contact";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import ResMenu from "./components/ResMenu";
 import UserContext from "./utils/UserContext";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
+import Login from "./components/Login";
+
 const App = () => {
+
     const [userName, setUserName] = useState();
-    useEffect(() => {
-        const data = {
-            name: "Sai Harshith"
-        }
-        setUserName(data.name)
-    }, [])
+
 
     return (
         <Provider store={appStore}>
@@ -52,7 +50,10 @@ const routerConfig = createBrowserRouter([{
     }, {
         path: "/cart",
         element: <Cart />
-    },],
+    }, {
+        path: "/login",
+        element: <Login />
+    }],
     errorElement: <Error />,
 },
 
