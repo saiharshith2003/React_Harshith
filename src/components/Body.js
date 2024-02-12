@@ -12,7 +12,7 @@ const Body = () => {
     const [filterList, setFilterList] = useState([]);
     const [searchtext, setSearchtext] = useState("");
     const ResPromotedLabel = withPromotedLabel(Card);
-    const { setUserName, userName } = useContext(UserContext)
+
     useEffect(() => {
         fetchData();
     }, [])
