@@ -29,7 +29,7 @@ const Body = () => {
 
         setList(apiList);
         setFilterList(apiList);
-        console.log(apiList)
+
     }
 
     const onlineStatus = useOnlineStatus();
@@ -65,15 +65,12 @@ const Body = () => {
                                 (res) => { return res.avgRating >= 4 }
                             )
                             setFilterList(list1);
-                            console.log(list1)
+
                         }}>
                         Top Rated Restaurants
                     </button>
                 </div>
-                <div className="m-4 p-4">
-                    <label className="p-2">UserName:</label>
-                    <input type="text" className="border-solid rounded-md shadow-md p-2" vlaue={userName} onChange={(e) => setUserName(e.target.value)} />
-                </div>
+
             </div>
             <div className="flex flex-wrap">
                 {filterList.map((res) => (

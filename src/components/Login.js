@@ -33,7 +33,7 @@ const Login = () => {
             createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
                 .then((userCredential) => {
                     const user = userCredential.user;
-                    console.log(user)
+
                     updateProfile(user, {
                         displayName: name.current.value, photoURL: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngwing.com%2Fen%2Fsearch%3Fq%3Dsmall%2Blogo&psig=AOvVaw1HatkYervzSzIdTDk8jpBm&ust=1707745708963000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCOC8ltW2o4QDFQAAAAAdAAAAABAE"
                     }).then(() => {
@@ -64,7 +64,7 @@ const Login = () => {
                 .then((userCredential) => {
 
                     const user = userCredential.user;
-                    console.log(user)
+
                     navigate("/")
                 })
                 .catch((error) => {

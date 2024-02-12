@@ -16,7 +16,7 @@ const ResMenu = () => {
     const { cuisines } = menuList?.cards[0]?.card?.card?.info
     //const { title } = menuList?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card
     //const { itemCards } = menuList?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card
-    console.log(menuList)
+
     const category =
         menuList?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
             (c) =>
@@ -24,10 +24,6 @@ const ResMenu = () => {
                 "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
         );
 
-    //console.log(category?.[0]?.card?.card?.title)
-
-
-    //console.log(category)
 
 
 

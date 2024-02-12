@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { CDN_URL } from "../utils/constants";
 import { addItem, removeItem } from "../utils/cartSlice";
 const ItemList = (props) => {
-    console.log(props.cardData)
+
     const { cardData, showButton } = props;
     const dispatch = useDispatch()
     const handleAdd = (cardData) => {

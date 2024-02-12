@@ -17,8 +17,8 @@ const Header = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { showLoginSignupButton, displayName } = useSelector((store) => store.user);
-    console.log("Hi Harshith", showLoginSignupButton);
-    console.log(displayName)
+
+
     const handleSignOut = () => {
         signOut(auth).then(() => {
             dispatch(dontShowButton())
